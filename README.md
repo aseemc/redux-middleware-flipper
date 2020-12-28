@@ -22,7 +22,7 @@ yarn add redux-middleware-flipper react-native-flipper
 # for iOS
 cd ios && pod install
 ```
-- Add the middleware in dev mode
+- Add the middleware in dev mode in your redux store setup file
 ```
 if (__DEV__) {
   const reduxDebugger = require('redux-middleware-flipper').default;
