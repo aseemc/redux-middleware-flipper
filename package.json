@@ -1,6 +1,6 @@
 {
   "name": "redux-middleware-flipper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React native redux middleware to send redux logs to the companion Flipper desktop plugin",
   "main": "index.js",
   "scripts": {
