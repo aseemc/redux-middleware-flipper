@@ -6,7 +6,6 @@ React native redux middleware to send redux logs to the [companion Flipper deskt
 ![Workflow](./assets/rn-redux-flipper.gif)
 
 ## Features ✨
-
 - Log all dispatched redux actions
 - Show details about the action dispatched (action, state diff and the current state)
 - Custom action dispatcher
@@ -14,37 +13,32 @@ React native redux middleware to send redux logs to the [companion Flipper deskt
 - Search for a specific action type
 
 ## Setup guide ✍🏻
-
-- Install the `redux-middleware-flipper` and `react-native-flipper`
+- Install the `redux-middleware-flipper` and `react-native-flipper`.
 ```bash
 yarn add redux-middleware-flipper react-native-flipper
 
 # for iOS
 cd ios && pod install
 ```
-- Add the middleware in dev mode in your redux store setup file
+- Add the middleware in dev mode in your redux store setup file.
 ```javascript
 if (__DEV__) {
   const reduxDebugger = require('redux-middleware-flipper').default;
   middleware.push(reduxDebugger());
 }
 ```
-- Open Flipper desktop app and install the plugin 
+- Open Flipper desktop app and install the plugin.
 ```
 Manage Plugins > Install Plugins > search "RNReduxDebugger" > Install
 ```
 
 ## References 📚
-
 - Getting started with [Flipper](https://fbflipper.com/docs/tutorial/intro)
 
 ## Motivation
-
 - This project is inspired by [Flutter version](https://github.com/leanflutter/flipper-plugin-reduxinspector)
 
-<br>
-
-# ISC License (ISC)
+## ISC License (ISC)
 Copyright 2020 Aseem Chaudhary
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
