@@ -16,14 +16,14 @@ React native redux middleware to send redux logs to the [companion Flipper deskt
 ## Setup guide ✍🏻
 
 - Install the `redux-middleware-flipper` and `react-native-flipper`
-```
+```bash
 yarn add redux-middleware-flipper react-native-flipper
 
 # for iOS
 cd ios && pod install
 ```
 - Add the middleware in dev mode in your redux store setup file
-```
+```javascript
 if (__DEV__) {
   const reduxDebugger = require('redux-middleware-flipper').default;
   middleware.push(reduxDebugger());
