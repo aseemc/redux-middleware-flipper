@@ -1,0 +1,22 @@
+{
+  "name": "redux-middleware-flipper",
+  "version": "1.0.0",
+  "description": "React native redux middleware to send redux logs to the companion desktop plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aseem Chaudhary",
+  "license": "ISC",
+  "keywords": [
+    "react-native",
+    "redux",
+    "flipper",
+    "react-native-flipper"
+  ],
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "react-native": "^0.62.0",
+    "react-native-flipper": "^0.69.0"
+  }
+}
