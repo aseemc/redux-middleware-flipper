@@ -37,3 +37,7 @@ Manage Plugins > Install Plugins > search "RNReduxDebugger" > Install
 ## References 📚
 
 - Getting started with [Flipper](https://fbflipper.com/docs/tutorial/intro)
+
+## Motivation
+
+- This project is inspired by [Flutter version](https://github.com/leanflutter/flipper-plugin-reduxinspector)
