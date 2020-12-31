@@ -6,7 +6,7 @@ React native redux middleware to send redux logs to the [companion Flipper deskt
 ![Workflow](./assets/rn-redux-flipper.gif)
 
 ## Features ✨
-- Log all dispatched redux actions
+- Show all dispatched redux actions
 - Show details about the action dispatched (action, state diff and the current state)
 - Custom action dispatcher
 - Replay selected actions
