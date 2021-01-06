@@ -3,6 +3,7 @@ import { addPlugin } from 'react-native-flipper';
 const reduxDebuggerPlugin = {
   connection: null,
   store: null,
+  actionReplayDelay: 0,
   getId: () => 'RNReduxDebugger',
   onConnect: (connection) => {
     this.connection = connection;
@@ -12,7 +13,13 @@ const reduxDebuggerPlugin = {
       try {
         if (this.store) {
           if (Array.isArray(action)) {
-            action.forEach((a) => this.store.dispatch(a));
+            action.forEach((a, index) => {
+              if (index === 0) {
+                this.store.dispatch(a);
+              } else {
+                setTimeout(() => this.store.dispatch(a), this.actionReplayDelay * index);
+              }
+            });
           } else {
             this.store.dispatch(action);
           }
@@ -28,6 +35,9 @@ const reduxDebuggerPlugin = {
   },
   setStore: (store) => {
     this.store = store;
+  },
+  setActionReplayDelay: (delay) => {
+    this.actionReplayDelay = delay;
   },
   sendAction: ({ action, requestTime, prevState, nextState, duration }) => {
     if (this.connection) {
@@ -46,11 +56,16 @@ const reduxDebuggerPlugin = {
   },
 };
 
-export default () => {
+export default ({
+  actionsBlacklist = [],
+  actionsWhitelist = [],
+  actionReplayDelay = 500,
+}) => {
   addPlugin(reduxDebuggerPlugin);
 
   return (store) => (next) => (action) => {
     reduxDebuggerPlugin.setStore(store);
+    reduxDebuggerPlugin.setActionReplayDelay(actionReplayDelay);
 
     let result;
 
@@ -59,6 +74,24 @@ export default () => {
       const startTime = Date.now();
       result = next(action);
 
+      if (actionsBlacklist.length && actionsBlacklist.includes(action.type)) {
+        return result;
+      }
+      
+      if (actionsWhitelist.length) {
+        if (actionsWhitelist.includes(action.type)) {
+          reduxDebuggerPlugin.sendAction({
+            action,
+            requestTime: startTime,
+            prevState,
+            nextState: store.getState(),
+            duration: `${Date.now() - startTime} ms`,
+          });
+        }
+
+        return result;
+      } 
+      
       reduxDebuggerPlugin.sendAction({
         action,
         requestTime: startTime,
