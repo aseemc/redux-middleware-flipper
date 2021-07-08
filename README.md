@@ -1,5 +1,5 @@
 # redux-middleware-flipper
-React native redux middleware to send redux logs to the [companion Flipper desktop plugin.](https://github.com/aseemc/flipper-plugin-react-native-redux-debugger)
+React native redux middleware to send redux logs to the [companion Flipper desktop plugin.](https://www.npmjs.com/package/flipper-plugin-react-native-redux-debugger)
 
 > ❗For Flipper setup in your react native project, please refer to the [setup guide.](https://fbflipper.com/docs/getting-started/react-native)
 
